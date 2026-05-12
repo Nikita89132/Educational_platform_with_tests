@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportIQ — Тесты по спорту</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__icon">🏆</span>
+                <span class="logo__text">Sport<span class="logo__accent">IQ</span></span>
+            </a>
+            <nav class="nav">
+                <a href="#tests" class="nav__link">Тесты</a>
+                <a href="#stats" class="nav__link">Статистика</a>
+                <a href="#about" class="nav__link">О платформе</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero__title">Проверь свои знания<br>в мире спорта</h1>
+            <p class="hero__subtitle">4 уровня сложности · 80+ вопросов · Таймер · Мгновенный результат</p>
+            <a href="#tests" class="hero__btn">Начать тестирование</a>
+        </div>
+    </section>
+
+    <!-- Список тестов -->
+    <section class="tests" id="tests">
+        <div class="container">
+            <h2 class="section-title">Выберите уровень сложности</h2>
+            <div class="tests-grid" id="tests-grid">
+                <!-- Вставляется JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <h2 class="section-title">Ваша статистика</h2>
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card__value" id="stat-completed">0</div>
+                    <div class="stat-card__label">Пройдено тестов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__value" id="stat-avg">0%</div>
+                    <div class="stat-card__label">Средний балл</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__value" id="stat-best">—</div>
+                    <div class="stat-card__label">Лучший результат</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__value" id="stat-total">0</div>
+                    <div class="stat-card__label">Всего вопросов</div>
+                </div>
+            </div>
+            <div class="stats-chart" id="stats-chart">
+                <!-- Прогресс-бары по тестам -->
+            </div>
+        </div>
+    </section>
+
+    <!-- О платформе -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">О платформе</h2>
+            <div class="about__content">
+                <p>SportIQ — образовательная платформа для проверки знаний в области спорта. Каждый тест содержит 20 вопросов с вариантами ответов, таймером и автоматическим подсчётом результатов.</p>
+                <p>Результаты сохраняются в локальном хранилище браузера, чтобы вы могли отслеживать свой прогресс.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">© 2026 SportIQ — Выпускной проект по дисциплине «Веб-дизайн»</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно теста -->
+    <div class="modal" id="quiz-modal" hidden>
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <!-- Заголовок теста -->
+            <div class="quiz-header">
+                <div class="quiz-header__info">
+                    <span class="quiz-header__level" id="quiz-level"></span>
+                    <h3 class="quiz-header__title" id="quiz-title"></h3>
+                </div>
+                <div class="quiz-header__timer">
+                    <span class="quiz-header__timer-icon">⏱</span>
+                    <span class="quiz-header__timer-value" id="timer">00:00</span>
+                </div>
+                <button class="quiz-header__close" id="quiz-close" aria-label="Закрыть">✕</button>
+            </div>
+
+            <!-- Прогресс -->
+            <div class="quiz-progress">
+                <div class="quiz-progress__bar">
+                    <div class="quiz-progress__fill" id="progress-fill"></div>
+                </div>
+                <span class="quiz-progress__text" id="progress-text">1 / 20</span>
+            </div>
+
+            <!-- Вопрос -->
+            <div class="quiz-body" id="quiz-body">
+                <!-- Вставляется JS -->
+            </div>
+
+            <!-- Навигация -->
+            <div class="quiz-nav">
+                <button class="quiz-nav__btn quiz-nav__btn--prev" id="btn-prev" disabled>← Назад</button>
+                <button class="quiz-nav__btn quiz-nav__btn--next" id="btn-next">Далее →</button>
+                <button class="quiz-nav__btn quiz-nav__btn--finish" id="btn-finish" hidden>Завершить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно результатов -->
+    <div class="modal" id="result-modal" hidden>
+        <div class="modal__overlay"></div>
+        <div class="modal__content modal__content--result">
+            <div class="result-card">
+                <div class="result-card__icon" id="result-icon">🏅</div>
+                <h2 class="result-card__title" id="result-title">Тест завершён!</h2>
+                <div class="result-card__score">
+                    <span class="result-card__score-value" id="result-score">0</span>
+                    <span class="result-card__score-total">/ 20</span>
+                </div>
+                <div class="result-card__percent" id="result-percent">0%</div>
+                <div class="result-card__time" id="result-time">Время: 00:00</div>
+                <div class="result-card__message" id="result-message"></div>
+                <div class="result-card__details" id="result-details"></div>
+                <div class="result-card__actions">
+                    <button class="result-card__btn result-card__btn--primary" id="btn-retry">Пройти снова</button>
+                    <button class="result-card__btn" id="btn-close-result">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
